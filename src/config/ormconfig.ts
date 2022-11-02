@@ -6,7 +6,7 @@ export const dataSource = new DataSource({
     username:"asror",
     host: 'localhost',
     port: 5432,
-    database:'lavina',
+    database:'ecommerce',
     password: 'aaa13579#',
     synchronize: true,
     entities: [path.join(__dirname, '..', 'entities', '*.entity.{ts,js}')]

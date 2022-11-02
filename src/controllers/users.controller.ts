@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { dataSource } from "../config/ormconfig";
 import { Users } from "../entities/user.entity";
 import { HashedPassword , ComparedPassword} from "./../helpers/password"
+import { stmp } from "../helpers/stmp";
 
 export default {
    GET:async(req:Request,res:Response) => {
@@ -18,22 +19,26 @@ export default {
    },
    NEW_USER:async(req:Request,res:Response) => {
       try {
-         const { fullname, password } = req.body
+         const { fullname, password , email } = req.body
 
          const HashPassword = HashedPassword(password)
 
-         const newUser = await dataSource
+
+         const { raw } = await dataSource
                                  .createQueryBuilder()
                                  .insert()
                                  .into(Users)
                                  .values({
                                     fullname: fullname,
+                                    email:email,
                                     password: HashPassword
                                  })
                                  .returning('*')
                                  .execute()
 
-         res.json(newUser)
+         stmp('45',email)                        
+         
+         res.json(raw[0])
          
       } catch (error) {
          console.log(error)

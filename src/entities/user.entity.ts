@@ -19,7 +19,7 @@ export class Users {
       length:128,
       nullable:false
    })
-   emial:string
+   email:string
 
    // User Address Info Column
    @Column({

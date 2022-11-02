@@ -7,6 +7,7 @@ const router = Router()
 
 router
       .get('/users',usersController.GET)
+      .post('/sign-up',usersController.NEW_USER)
 
 
 export default router;
