@@ -1,7 +1,7 @@
 import { Entity , Column , PrimaryGeneratedColumn , CreateDateColumn , UpdateDateColumn} from "typeorm";
 
 @Entity({name:"user"})
-export class User {
+export class Users {
    @PrimaryGeneratedColumn("uuid")
    id:string
 
@@ -21,9 +21,24 @@ export class User {
    })
    emial:string
 
+   // User Address Info Column
+   @Column({
+      type:"varchar",
+      length:512,
+      nullable:true
+   })
+
+   // User Phone Number Column
+   @Column({
+      type:"varchar",
+      length:64,
+      nullable:true
+   })
+
    // User Password Collumn
    @Column({
-      type:"text",
+      type:"varchar",
+      length:1024,
       nullable:false
    })
    password:string
@@ -37,14 +52,14 @@ export class User {
 
    // User Data Created Date Column
    @CreateDateColumn({
-      type:"time",
+      type:"timestamptz",
       nullable:false
    })
    createdAt:string
 
    // User Data Updated Date Column
    @UpdateDateColumn({
-      type:"time",
+      type:"timestamptz",
       nullable:false
    })
    updateAt:string

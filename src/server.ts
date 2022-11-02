@@ -1,9 +1,11 @@
 import express from "express";
+import router from "./routes";
 
 const app:express.Application = express()
 const PORT = 5000
 
 app.use(express.json())
+app.use(router)
 
 
 app.get('/',(_,res) => {
