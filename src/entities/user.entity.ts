@@ -55,13 +55,13 @@ export class Users {
       type:"timestamptz",
       nullable:false
    })
-   createdAt:string
+   createdAt:Date
 
    // User Data Updated Date Column
    @UpdateDateColumn({
       type:"timestamptz",
       nullable:false
    })
-   updateAt:string
+   updatedAt:Date
 }
 
